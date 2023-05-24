@@ -22,7 +22,7 @@ mem_usage=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
 
 echo "Memory Usage: $mem_usage"
 
-if (( $(echo "$mem_usage > $THRESHOLD_MEM" |bc -l) )); then
+if (( $(echo "$mem_usage > $THRESHOLD_MEM" | bc -l) )); then
   echo "Memory usage is higher than $THRESHOLD_MEM%, it's $mem_usage%" | \
   mail -s "High Memory usage alert" $EMAIL
   checks_passed=false
